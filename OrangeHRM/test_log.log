@@ -1,0 +1,16 @@
+(asctime)s - INFO: login_testCase1_valid Execution Start....
+(asctime)s - INFO: Firefox Launch Successful.
+(asctime)s - INFO: Login page open Successful.
+(asctime)s - INFO: Type Username Successful.
+(asctime)s - INFO: Type Password Successful.
+(asctime)s - INFO: Login Button clicked Successful.
+(asctime)s - INFO: Test Passed. Login successful.
+(asctime)s - INFO: login_testCase1_valid execution completed..
+2023-12-30 11:14:45,490 - INFO: login_testCase1_valid Execution Start....
+2023-12-30 11:14:52,339 - INFO: Firefox Launch Successful.
+2023-12-30 11:15:03,046 - INFO: Login page open Successful.
+2023-12-30 11:15:03,173 - INFO: Type Username Successful.
+2023-12-30 11:15:03,200 - INFO: Type Password Successful.
+2023-12-30 11:15:04,654 - INFO: Login Button clicked Successful.
+2023-12-30 11:15:09,658 - INFO: Test Passed. Login successful.
+2023-12-30 11:15:10,577 - INFO: login_testCase1_valid execution completed..
