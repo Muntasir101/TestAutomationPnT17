@@ -8,13 +8,17 @@ from selenium.webdriver.support import expected_conditions as EC
 # configure the logging settings
 logging.basicConfig(filename="test_log.log", level=logging.INFO, format='%(asctime)s - %(levelname)s: %(message)s')
 
+screenshot_file_path = "E:\\Offline_Batch_17\\Projects\\TestAutomationPnT17\\screenshots"
+
 
 def login_testCase1_valid():
+
     logging.info('login_testCase1_valid Execution Start....')
     # Step 1: Launch Browser
     driver = webdriver.Firefox()
     logging.info('Firefox Launch Successful.')
     driver.maximize_window()
+    driver.implicitly_wait(5)
 
     # Step 2: Open URL
     driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
@@ -45,9 +49,11 @@ def login_testCase1_valid():
         logging.error("Password field is not enabled.Test Failed")
 
     # Step 5: Click Login button
-    login_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
+    login_button = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
     login_button.click()
     logging.info('Login Button clicked Successful.')
+    time.sleep(5)
 
     # verify login or not by check URL
     expected_url = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
@@ -55,8 +61,12 @@ def login_testCase1_valid():
 
     if expected_url == actual_url:
         logging.info('Test Passed. Login successful.')
+        # capture screenshot
+        driver.get_screenshot_as_file(screenshot_file_path+"\\login_passed_test_passed.png")
     else:
         logging.error("Test Failed. Login failed.")
+        # capture screenshot
+        driver.get_screenshot_as_file(screenshot_file_path+"\\login_failed_test_failed.png")
 
     driver.close()
     logging.info('login_testCase1_valid execution completed..')
@@ -71,7 +81,7 @@ def login_testCase2_invalid():
 
     # Step 2: Open URL
     driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-    time.sleep(3)
+
 
     # Step 3: Enter Username
     username_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username")))
@@ -98,9 +108,11 @@ def login_testCase2_invalid():
         logging.error("Password field is not enabled.Test Failed")
 
     # Step 5: Click Login button
-    login_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
+    login_button = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
     login_button.click()
     logging.info('Login Button clicked Successful.')
+    time.sleep(4)
 
     # verify login or not by check error message
     error_message = driver.find_element(By.CSS_SELECTOR, ".oxd-alert-content-text")
@@ -110,12 +122,15 @@ def login_testCase2_invalid():
 
     if expected_error_message == actual_error_message_text:
         logging.info("Test Passed. Login failed.Error message: " + expected_error_message)
+        # capture screenshot
+        driver.get_screenshot_as_file(screenshot_file_path + "\\test_passed_login_failed.png")
     else:
         logging.error("Test Failed. Did not get expected error message: " + expected_error_message)
+        driver.get_screenshot_as_file(screenshot_file_path + "\\test_failed_login_passed.png")
 
     driver.close()
     logging.info('login_testCase2_invalid execution completed..')
 
 
 login_testCase1_valid()
-#login_testCase2_invalid()
+# login_testCase2_invalid()
