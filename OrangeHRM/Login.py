@@ -2,6 +2,8 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import logging
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # configure the logging settings
 logging.basicConfig(filename="test_log.log", level=logging.INFO, format='%(asctime)s - %(levelname)s: %(message)s')
@@ -16,11 +18,10 @@ def login_testCase1_valid():
 
     # Step 2: Open URL
     driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-    time.sleep(3)
     logging.info('Login page open Successful.')
 
     # Step 3: Enter Username
-    username_field = driver.find_element(By.NAME, "username")
+    username_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username")))
     username_field_enable_state = username_field.is_enabled()
 
     # verify username field is enabled or nor
@@ -32,7 +33,7 @@ def login_testCase1_valid():
         logging.error("Username field is not enabled.Test Failed.")
 
     # Step 4: Enter Password
-    password_field = driver.find_element(By.NAME, "password")
+    password_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "password")))
     password_field_enable_state = password_field.is_enabled()
 
     # verify password field is enabled or not
@@ -44,10 +45,9 @@ def login_testCase1_valid():
         logging.error("Password field is not enabled.Test Failed")
 
     # Step 5: Click Login button
-    login_button = driver.find_element(By.CSS_SELECTOR, ".orangehrm-login-button")
+    login_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
     login_button.click()
     logging.info('Login Button clicked Successful.')
-    time.sleep(5)
 
     # verify login or not by check URL
     expected_url = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
@@ -74,7 +74,7 @@ def login_testCase2_invalid():
     time.sleep(3)
 
     # Step 3: Enter Username
-    username_field = driver.find_element(By.NAME, "username")
+    username_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username")))
     username_field_enable_state = username_field.is_enabled()
 
     # verify that username field is enabled or not
@@ -86,7 +86,7 @@ def login_testCase2_invalid():
         logging.error("Username field is not enabled.Test Failed.")
 
     # Step 4: Enter Password
-    password_field = driver.find_element(By.NAME, "password")
+    password_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "password")))
     password_field_enable_state = password_field.is_enabled()
 
     # verify that password field is enabled or not
@@ -98,10 +98,9 @@ def login_testCase2_invalid():
         logging.error("Password field is not enabled.Test Failed")
 
     # Step 5: Click Login button
-    login_button = driver.find_element(By.CSS_SELECTOR, ".orangehrm-login-button")
+    login_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
     login_button.click()
     logging.info('Login Button clicked Successful.')
-    time.sleep(5)
 
     # verify login or not by check error message
     error_message = driver.find_element(By.CSS_SELECTOR, ".oxd-alert-content-text")
