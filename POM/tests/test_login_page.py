@@ -1,32 +1,29 @@
-import pytest
-from selenium import webdriver
 from POM.pages.login_page import LoginPage
-from POM.utils.config import login_url
-from POM.utils.config import BROWSER
+from POM.data.login_data import LoginTestData
+import logging
+from POM.utils.config import LOGGING_LEVEL, LOGGING_FORMAT, LOGGING_FILENAME
 
+logger = logging.getLogger(__name__)
+logger.setLevel(LOGGING_LEVEL)
 
-@pytest.fixture
-def setup():
-    if BROWSER == 'chrome':
-        driver = webdriver.Chrome()
-    elif BROWSER == 'firefox':
-        driver = webdriver.Firefox()
-    elif BROWSER == 'edge':
-        driver = webdriver.Edge()
-    else:
-        raise ValueError("Unsupported browser:" + BROWSER)
+file_handler = logging.FileHandler(LOGGING_FORMAT)
+file_handler.setLevel(LOGGING_LEVEL)
 
-    driver.get(login_url)
+formatter = logging.Formatter(LOGGING_FORMAT)
+file_handler.setFormatter(formatter)
 
-    yield driver
-    driver.quit()
+logger.addHandler(file_handler)
 
 
 def test_login_valid(setup):
     login_page = LoginPage(setup)
-    login_page.login("Admin", "admin123")
+    logger.info("Valid test login page")
+    login_page.login(LoginTestData.VALID_USERNAME, LoginTestData.VALID_PASSWORD)
+    logger.info("Valid login page completed successfully")
 
 
 def test_login_invalid(setup):
     login_page = LoginPage(setup)
-    login_page.login("Admin12", "admin1232333")
+    logger.info("InValid test login page")
+    login_page.login(LoginTestData.INVALID_USERNAME, LoginTestData.INVALID_PASSWORD)
+    logger.info("InValid login page completed successfully")
