@@ -1,13 +1,22 @@
 import pytest
 from selenium import webdriver
 from POM.pages.login_page import LoginPage
-from POM.pages.login_page import BasePage
+from POM.utils.config import login_url
+from POM.utils.config import BROWSER
 
 
 @pytest.fixture
 def setup():
-    driver = webdriver.Firefox()
-    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+    if BROWSER == 'chrome':
+        driver = webdriver.Chrome()
+    elif BROWSER == 'firefox':
+        driver = webdriver.Firefox()
+    elif BROWSER == 'edge':
+        driver = webdriver.Edge()
+    else:
+        raise ValueError("Unsupported browser:" + BROWSER)
+
+    driver.get(login_url)
 
     yield driver
     driver.quit()
