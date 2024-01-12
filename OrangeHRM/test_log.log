@@ -96,3 +96,11 @@
 2023-12-30 12:51:55,990 - INFO: Login Button clicked Successful.
 2023-12-30 12:52:00,994 - INFO: Test Passed. Login successful.
 2023-12-30 12:52:02,331 - INFO: login_testCase1_valid execution completed..
+2024-01-12 10:02:44,975 - INFO: login_testCase1_valid Execution Start....
+2024-01-12 10:02:54,566 - INFO: Firefox Launch Successful.
+2024-01-12 10:03:01,506 - INFO: Login page open Successful.
+2024-01-12 10:03:02,369 - INFO: Type Username Successful.
+2024-01-12 10:03:02,417 - INFO: Type Password Successful.
+2024-01-12 10:03:04,543 - INFO: Login Button clicked Successful.
+2024-01-12 10:03:09,545 - INFO: Test Passed. Login successful.
+2024-01-12 10:03:10,521 - INFO: login_testCase1_valid execution completed..
