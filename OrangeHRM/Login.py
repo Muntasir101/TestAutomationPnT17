@@ -85,7 +85,7 @@ def login_testCase2_invalid():
 
 
     # Step 3: Enter Username
-    username_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username")))
+    username_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(LoginPageLocators.username_field))
     username_field_enable_state = username_field.is_enabled()
 
     # verify that username field is enabled or not
@@ -97,7 +97,7 @@ def login_testCase2_invalid():
         logging.error("Username field is not enabled.Test Failed.")
 
     # Step 4: Enter Password
-    password_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "password")))
+    password_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(LoginPageLocators.password_field))
     password_field_enable_state = password_field.is_enabled()
 
     # verify that password field is enabled or not
@@ -110,7 +110,7 @@ def login_testCase2_invalid():
 
     # Step 5: Click Login button
     login_button = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, ".orangehrm-login-button")))
+        EC.visibility_of_element_located(LoginPageLocators.login_button))
     login_button.click()
     logging.info('Login Button clicked Successful.')
     time.sleep(4)
