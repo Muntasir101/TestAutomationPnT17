@@ -1,8 +1,0 @@
-2024-01-13 10:48:31,092 - POM.tests.test_login_page - INFO - Valid test login page
-2024-01-13 10:48:33,560 - POM.tests.test_login_page - INFO - Valid login page completed successfully
-2024-01-13 10:48:51,392 - POM.tests.test_login_page - INFO - InValid test login page
-2024-01-13 10:48:54,466 - POM.tests.test_login_page - INFO - InValid login page completed successfully
-2024-01-13 10:52:42,490 - POM.tests.test_login_page - INFO - Valid test login page
-2024-01-13 10:52:45,045 - POM.tests.test_login_page - INFO - Valid login page completed successfully
-2024-01-13 10:53:04,108 - POM.tests.test_login_page - INFO - InValid test login page
-2024-01-13 10:53:07,800 - POM.tests.test_login_page - INFO - InValid login page completed successfully
