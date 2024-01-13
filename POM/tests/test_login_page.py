@@ -1,3 +1,6 @@
+import os
+import time
+
 from POM.pages.login_page import LoginPage
 from POM.data.login_data import LoginTestData
 import logging
@@ -20,6 +23,7 @@ def test_login_valid(setup):
     logger.info("Valid test login page")
     login_page.login(LoginTestData.VALID_USERNAME, LoginTestData.VALID_PASSWORD)
     logger.info("Valid login page completed successfully")
+    login_page.driver.get_screenshot_as_file(os.path.join(os.getcwd(),'POM','Screenshots'+"\\Valid_login.png"))
 
 
 def test_login_invalid(setup):
@@ -27,3 +31,5 @@ def test_login_invalid(setup):
     logger.info("InValid test login page")
     login_page.login(LoginTestData.INVALID_USERNAME, LoginTestData.INVALID_PASSWORD)
     logger.info("InValid login page completed successfully")
+    time.sleep(3)
+    login_page.driver.get_screenshot_as_file(os.path.join(os.getcwd(), 'POM', 'Screenshots' + "\\inValid_login.png"))
