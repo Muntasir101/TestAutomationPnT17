@@ -5,16 +5,21 @@ from POM.pages.login_page import LoginPage
 from POM.data.login_data import LoginTestData
 import logging
 from POM.utils.config import LOGGING_LEVEL, LOGGING_FORMAT, LOGGING_FILENAME
+from POM.utils.excel_utils import *
 
+# Implement Logging interface
 logger = logging.getLogger(__name__)
 logger.setLevel(LOGGING_LEVEL)
 
-file_handler = logging.FileHandler(LOGGING_FORMAT)
+# Create a file handler and set the logging level
+file_handler = logging.FileHandler(LOGGING_FILENAME)
 file_handler.setLevel(LOGGING_LEVEL)
 
+# Create a formatter and add it to the file handler
 formatter = logging.Formatter(LOGGING_FORMAT)
 file_handler.setFormatter(formatter)
 
+# Add the file handler to the logger
 logger.addHandler(file_handler)
 
 
